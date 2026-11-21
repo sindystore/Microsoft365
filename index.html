@@ -1,0 +1,3117 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color"
+    content="#fff1f7">
+
+  <title>SNI sindy | Digital Mini Store</title>
+
+  <meta name="description"
+    content="SNI sindy ร้านบริการดิจิทัล สมัครสมาชิก สั่งซื้อ แนบสลิป และรับสินค้าอัตโนมัติ">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect"
+    href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pinky: {
+              50: '#fff5fa',
+              100: '#ffe4f0',
+              200: '#ffc9e2',
+              300: '#ffa6d1',
+              400: '#fb80b9',
+              500: '#ee5c9e',
+              600: '#d83d85',
+              700: '#b92a6e',
+              800: '#922259',
+              900: '#711d48'
+            }
+          },
+          fontFamily: {
+            prompt: ['Prompt', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Prompt', sans-serif;
+      color: #4b3441;
+      background-color: #fff7fb;
+      background-image:
+        linear-gradient(
+          rgba(255,247,251,.85),
+          rgba(255,247,251,.93)
+        ),
+        url('https://i.postimg.cc/B6M9JLRW/D113551C-41D1-45DC-84A7-60FBAAA1EE63.png');
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .hidden-view {
+      display: none !important;
+    }
+
+    .glass {
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,.85);
+      box-shadow:
+        0 10px 40px rgba(214,92,145,.08);
+    }
+
+    .card {
+      background: rgba(255,255,255,.95);
+      border: 1px solid #ffe1ef;
+      border-radius: 22px;
+      box-shadow:
+        0 8px 28px rgba(223,104,158,.06);
+    }
+
+    .pink-gradient {
+      background:
+        linear-gradient(
+          135deg,
+          #ffeff7 0%,
+          #ffd8ea 48%,
+          #ffc4e0 100%
+        );
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 11px 18px;
+      border: none;
+      border-radius: 14px;
+      color: #fff;
+      background:
+        linear-gradient(
+          135deg,
+          #ef69a8,
+          #d83d85
+        );
+      font-weight: 600;
+      transition: .2s ease;
+      box-shadow:
+        0 5px 15px rgba(216,61,133,.18);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow:
+        0 8px 20px rgba(216,61,133,.25);
+    }
+
+    .btn-soft {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+      min-height: 42px;
+      padding: 10px 16px;
+      border: 1px solid #ffd3e7;
+      border-radius: 14px;
+      color: #b92a6e;
+      background: #fff1f8;
+      font-weight: 500;
+      transition: .2s ease;
+    }
+
+    .btn-soft:hover {
+      background: #ffe1ef;
+    }
+
+    .input {
+      display: block;
+      width: 100%;
+      min-height: 45px;
+      padding: 11px 14px;
+      border: 1px solid #f7c8df;
+      border-radius: 13px;
+      outline: none;
+      background: #fff;
+      color: #4b3441;
+      font-size: 14px;
+      transition: .2s ease;
+    }
+
+    .input:focus {
+      border-color: #ee5c9e;
+      box-shadow:
+        0 0 0 3px rgba(238,92,158,.12);
+    }
+
+    textarea.input {
+      resize: vertical;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 14px;
+      border-radius: 13px;
+      color: #8b6277;
+      font-size: 13px;
+      font-weight: 500;
+      transition: .2s ease;
+    }
+
+    .nav-btn:hover,
+    .nav-btn.active {
+      color: #b92a6e;
+      background: #ffe8f2;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #fff0f7;
+      color: #b92a6e;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .product-img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 16px;
+      background:
+        linear-gradient(
+          135deg,
+          #fff0f7,
+          #ffd8e9
+        );
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: rgba(64,35,51,.55);
+      backdrop-filter: blur(6px);
+    }
+
+    .modal-panel {
+      width: 100%;
+      max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow:
+        0 24px 80px rgba(0,0,0,.16);
+    }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 20px;
+      z-index: 200;
+      max-width: 360px;
+      padding: 14px 20px;
+      border-radius: 15px;
+      color: #fff;
+      background: #a52a67;
+      font-size: 13px;
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.15);
+    }
+
+    .stock-box {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      padding: 16px;
+      border: 1px dashed #e8a1c4;
+      border-radius: 14px;
+      background: #fff7fb;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .admin-table th {
+      padding: 13px;
+      text-align: left;
+      background: #fff0f7;
+      color: #a52a67;
+      white-space: nowrap;
+    }
+
+    .admin-table td {
+      padding: 13px;
+      border-bottom: 1px solid #fce5ef;
+      vertical-align: middle;
+    }
+
+    .admin-tab {
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: #fff;
+      color: #93677d;
+      border: 1px solid #fce1ed;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .admin-tab.active {
+      background: #d83d85;
+      color: white;
+      border-color: #d83d85;
+    }
+
+    .soft-pattern {
+      background-image:
+        radial-gradient(
+          #f8b8d6 1px,
+          transparent 1px
+        );
+      background-size: 18px 18px;
+    }
+
+    @media(max-width:640px) {
+      .product-img {
+        height: 145px;
+      }
+
+      .nav-btn {
+        padding: 9px 10px;
+        font-size: 11px;
+      }
+
+      .modal-panel {
+        max-height: 94vh;
+      }
+    }
+  </style>
+</head>
+
+<body class="font-prompt">
+
+  <!-- Loading -->
+  <div id="loading"
+    class="hidden-view fixed inset-0 z-[300]
+      flex items-center justify-center
+      bg-white/80 backdrop-blur-sm">
+
+    <div class="text-center">
+      <div class="w-12 h-12 rounded-full
+        border-4 border-pink-100
+        border-t-pinky-500 animate-spin mx-auto">
+      </div>
+
+      <p class="text-sm text-pinky-700 mt-4">
+        กำลังดำเนินการ...
+      </p>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 glass">
+    <div class="max-w-7xl mx-auto px-4
+      sm:px-6 py-3 flex flex-wrap
+      justify-between items-center gap-3">
+
+      <button onclick="showView('home')"
+        class="flex items-center gap-3">
+
+        <div class="w-11 h-11 rounded-2xl
+          pink-gradient flex items-center
+          justify-center">
+
+          <i data-lucide="heart-handshake"
+            class="w-6 h-6 text-pinky-700"></i>
+        </div>
+
+        <div class="text-left">
+          <h1 id="brandName"
+            class="font-bold text-lg
+              text-pinky-700">
+            SNI sindy
+          </h1>
+
+          <p class="text-[10px] text-gray-500">
+            DIGITAL MINI STORE
+          </p>
+        </div>
+      </button>
+
+      <div id="guestActions"
+        class="flex items-center gap-2">
+
+        <button onclick="openAuth('login')"
+          class="btn-soft text-xs">
+          เข้าสู่ระบบ
+        </button>
+
+        <button onclick="openAuth('register')"
+          class="btn-primary text-xs">
+          สมัครสมาชิก
+        </button>
+      </div>
+
+      <div id="userActions"
+        class="hidden-view flex items-center gap-2">
+
+        <span id="userName"
+          class="hidden sm:inline text-xs
+            text-pinky-700 font-semibold">
+        </span>
+
+        <button onclick="logout()"
+          class="btn-soft text-xs">
+          ออกจากระบบ
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="border-t border-pink-100/70">
+      <div class="max-w-7xl mx-auto px-4
+        flex items-center gap-1 overflow-x-auto">
+
+        <button data-view="home"
+          onclick="showView('home')"
+          class="nav-btn active">
+
+          <i data-lucide="store"
+            class="w-4 h-4"></i>
+          หน้าร้าน
+        </button>
+
+        <button data-view="orders"
+          onclick="showView('orders')"
+          class="nav-btn">
+
+          <i data-lucide="shopping-bag"
+            class="w-4 h-4"></i>
+          คำสั่งซื้อ
+        </button>
+
+        <button data-view="guide"
+          onclick="showView('guide')"
+          class="nav-btn">
+
+          <i data-lucide="book-open"
+            class="w-4 h-4"></i>
+          วิธีใช้งาน
+        </button>
+
+        <button id="adminNav"
+          data-view="admin"
+          onclick="showView('admin')"
+          class="nav-btn hidden-view">
+
+          <i data-lucide="settings"
+            class="w-4 h-4"></i>
+          หลังบ้าน
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="max-w-7xl mx-auto
+    px-4 sm:px-6 py-7">
+
+    <!-- HOME -->
+    <section id="view-home">
+
+      <!-- Hero -->
+      <div class="pink-gradient rounded-[28px]
+        p-6 sm:p-10 mb-7 relative
+        overflow-hidden">
+
+        <div class="absolute -right-12 -top-12
+          w-52 h-52 rounded-full
+          bg-white/25"></div>
+
+        <div class="relative max-w-2xl">
+          <span class="inline-flex
+            items-center gap-2 px-3 py-2
+            rounded-full bg-white/60
+            text-xs text-pinky-700 mb-5">
+
+            <i data-lucide="sparkles"
+              class="w-4 h-4"></i>
+            SNI sindy Premium Store
+          </span>
+
+          <h2 id="heroTitle"
+            class="text-3xl sm:text-4xl
+              font-bold text-pinky-800
+              leading-tight mb-4">
+            Welcome to SNI sindy
+          </h2>
+
+          <p id="heroText"
+            class="text-sm sm:text-base
+              text-pinky-800/80 leading-8 mb-6">
+            เลือกแพ็กเกจ ชำระเงิน แนบสลิป
+            และรับสินค้าอัตโนมัติ
+          </p>
+
+          <button onclick="scrollToProducts()"
+            class="btn-primary">
+            <i data-lucide="shopping-cart"
+              class="w-4 h-4"></i>
+            เลือกซื้อสินค้า
+          </button>
+        </div>
+      </div>
+
+      <!-- Announcement -->
+      <div class="card p-4 mb-7
+        flex items-start gap-3">
+
+        <div class="w-9 h-9 rounded-xl
+          bg-pink-100 flex items-center
+          justify-center shrink-0">
+
+          <i data-lucide="megaphone"
+            class="w-5 h-5 text-pinky-600"></i>
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold
+            text-pinky-700 mb-1">
+            ประกาศจากร้าน
+          </p>
+
+          <p id="announcement"
+            class="text-xs text-gray-600
+              leading-6">
+            กรุณาโอนเงินและแนบสลิปก่อนรับสินค้า
+          </p>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2
+        lg:grid-cols-4 gap-3 mb-9">
+
+        <div class="card p-5">
+          <i data-lucide="users"
+            class="w-5 h-5 text-pinky-500 mb-3"></i>
+
+          <p class="text-xs text-gray-500">
+            สมาชิก
+          </p>
+
+          <p id="statMembers"
+            class="text-2xl font-bold
+              text-pinky-700 mt-1">
+            0
+          </p>
+        </div>
+
+        <div class="card p-5">
+          <i data-lucide="wallet"
+            class="w-5 h-5 text-pinky-500 mb-3"></i>
+
+          <p class="text-xs text-gray-500">
+            ยอดขายที่บันทึก
+          </p>
+
+          <p id="statRevenue"
+            class="text-2xl font-bold
+              text-pinky-700 mt-1">
+            0 ฿
+          </p>
+        </div>
+
+        <div class="card p-5">
+          <i data-lucide="package-check"
+            class="w-5 h-5 text-pinky-500 mb-3"></i>
+
+          <p class="text-xs text-gray-500">
+            จัดส่งแล้ว
+          </p>
+
+          <p id="statSold"
+            class="text-2xl font-bold
+              text-pinky-700 mt-1">
+            0
+          </p>
+        </div>
+
+        <div class="card p-5">
+          <i data-lucide="boxes"
+            class="w-5 h-5 text-pinky-500 mb-3"></i>
+
+          <p class="text-xs text-gray-500">
+            สต๊อกพร้อมขาย
+          </p>
+
+          <p id="statStock"
+            class="text-2xl font-bold
+              text-pinky-700 mt-1">
+            0
+          </p>
+        </div>
+      </div>
+
+      <!-- Products -->
+      <section id="productsSection">
+        <div class="flex flex-wrap
+          justify-between items-center
+          gap-3 mb-5">
+
+          <div>
+            <h2 class="text-xl sm:text-2xl
+              font-bold text-pinky-700">
+              สินค้าทั้งหมด
+            </h2>
+
+            <p class="text-xs text-gray-500 mt-1">
+              เลือกแพ็กเกจที่ต้องการ
+            </p>
+          </div>
+
+          <span class="status">
+            Digital Products
+          </span>
+        </div>
+
+        <div id="productGrid"
+          class="grid grid-cols-1
+            sm:grid-cols-2 lg:grid-cols-3
+            xl:grid-cols-4 gap-4">
+
+          <div class="card p-8 text-center
+            col-span-full">
+            กำลังโหลดสินค้า...
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ORDERS -->
+    <section id="view-orders"
+      class="hidden-view">
+
+      <div class="mb-6">
+        <h2 class="text-2xl font-bold
+          text-pinky-700">
+          คำสั่งซื้อของฉัน
+        </h2>
+
+        <p class="text-xs text-gray-500 mt-2">
+          ตรวจสอบสถานะและดูข้อมูลสินค้าที่ได้รับ
+        </p>
+      </div>
+
+      <div id="ordersList"
+        class="space-y-4">
+      </div>
+    </section>
+
+    <!-- GUIDE -->
+    <section id="view-guide"
+      class="hidden-view">
+
+      <h2 class="text-2xl font-bold
+        text-pinky-700 mb-6">
+        คู่มือการใช้งาน
+      </h2>
+
+      <div class="grid grid-cols-1
+        md:grid-cols-2 gap-4 mb-6">
+
+        <div class="card p-6">
+          <i data-lucide="play-circle"
+            class="w-9 h-9 text-pinky-500 mb-4"></i>
+
+          <h3 class="font-bold mb-3">
+            วิธีเข้าร่วม Family
+          </h3>
+
+          <p class="text-sm text-gray-500 mb-5">
+            ดูวิดีโอแนะนำการเข้าร่วม
+          </p>
+
+          <a id="joinGuideLink"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary">
+            ดูวิดีโอ
+          </a>
+        </div>
+
+        <div class="card p-6">
+          <i data-lucide="log-out"
+            class="w-9 h-9 text-pinky-500 mb-4"></i>
+
+          <h3 class="font-bold mb-3">
+            วิธีออกจาก Family
+          </h3>
+
+          <p class="text-sm text-gray-500 mb-5">
+            ดูวิดีโอแนะนำการออกจาก Family
+          </p>
+
+          <a id="leaveGuideLink"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary">
+            ดูวิดีโอ
+          </a>
+        </div>
+      </div>
+
+      <div class="card p-5">
+        <h3 class="font-bold text-pinky-700 mb-4">
+          กฎและเงื่อนไขการใช้งาน
+        </h3>
+
+        <img id="rulesImage"
+          src=""
+          alt="กฎการใช้งาน"
+          class="w-full max-w-2xl mx-auto
+            rounded-2xl">
+      </div>
+    </section>
+
+    <!-- ADMIN -->
+    <section id="view-admin"
+      class="hidden-view">
+
+      <div class="mb-6">
+        <h2 class="text-2xl font-bold
+          text-pinky-700">
+          ระบบจัดการร้านค้า
+        </h2>
+
+        <p class="text-xs text-gray-500 mt-2">
+          SNI sindy Admin Dashboard
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-2 mb-6">
+
+        <button class="admin-tab active"
+          data-tab="dashboard"
+          onclick="adminTab('dashboard')">
+          ภาพรวม
+        </button>
+
+        <button class="admin-tab"
+          data-tab="products"
+          onclick="adminTab('products')">
+          สินค้า
+        </button>
+
+        <button class="admin-tab"
+          data-tab="stock"
+          onclick="adminTab('stock')">
+          สต๊อก
+        </button>
+
+        <button class="admin-tab"
+          data-tab="orders"
+          onclick="adminTab('orders')">
+          คำสั่งซื้อ
+        </button>
+
+        <button class="admin-tab"
+          data-tab="users"
+          onclick="adminTab('users')">
+          สมาชิก
+        </button>
+
+        <button class="admin-tab"
+          data-tab="settings"
+          onclick="adminTab('settings')">
+          ตั้งค่าร้าน
+        </button>
+      </div>
+
+      <div class="card p-4 sm:p-6">
+        <div id="adminContent">
+          กำลังโหลดข้อมูลหลังบ้าน...
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-12 border-t
+    border-pink-100 bg-white/75">
+
+    <div class="max-w-7xl mx-auto
+      px-4 py-8 flex flex-wrap
+      justify-between items-center gap-4">
+
+      <div>
+        <p class="font-bold text-pinky-700">
+          SNI sindy
+        </p>
+
+        <p class="text-xs text-gray-500 mt-1">
+          Digital Mini Store
+        </p>
+      </div>
+
+      <a id="lineLink"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-soft text-sm">
+
+        <i data-lucide="message-circle"
+          class="w-4 h-4"></i>
+        ติดต่อร้าน
+      </a>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="modal"
+    class="modal-backdrop hidden-view"
+    onclick="backdropClose(event)">
+
+    <div class="modal-panel">
+      <div class="sticky top-0 z-10
+        bg-white border-b border-pink-100
+        px-5 py-4 flex justify-between
+        items-center">
+
+        <h3 id="modalTitle"
+          class="font-bold text-pinky-700">
+          รายละเอียด
+        </h3>
+
+        <button onclick="closeModal()"
+          class="w-9 h-9 rounded-xl
+            bg-pink-50 flex items-center
+            justify-center">
+
+          <i data-lucide="x"
+            class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div id="modalBody"
+        class="p-5">
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast"
+    class="toast hidden-view">
+  </div>
+
+  <!-- JavaScript continues in Part 2 -->
+
+<script>
+/* =========================================
+   SNI sindy — FRONTEND PART 2/3
+   Customer Store & Automatic Delivery
+========================================= */
+
+// =====================================
+// 1. API CONFIGURATION
+// =====================================
+
+const API_URL =
+  'https://script.google.com/macros/s/AKfycbwAyDEzIwRl7ebbA51h_QH7uO-LXkUVFZo903ZJ7HGveT4ZCC_ARpePz3ZYAAo0iVtP/exec';
+
+const DEFAULT_STORE = {
+  storeName: 'SNI sindy',
+  heroTitle: 'Welcome to SNI sindy',
+  heroText:
+    'เลือกแพ็กเกจ ชำระเงิน แนบสลิป และรับสินค้าอัตโนมัติ',
+  announcement:
+    'กรุณาโอนเงินและแนบสลิปก่อนรับสินค้า',
+  backgroundUrl:
+    'https://i.postimg.cc/B6M9JLRW/D113551C-41D1-45DC-84A7-60FBAAA1EE63.png',
+  joinGuideUrl:
+    'https://youtu.be/SCUPAEcSzK0?si=POyByeXhse2RGAu6',
+  leaveGuideUrl:
+    'https://youtube.com/shorts/1JDykcJtujo?si=R__CZwTu4uIx1NFW',
+  rulesImageUrl:
+    'https://i.postimg.cc/Kj2NpJ0b/IMG-0518.jpg',
+  lineUrl:
+    'https://lin.ee/vxkpDvq',
+  bankName: 'ธนาคารออมสิน',
+  accountName: 'ออมสินมหาเฮง (คิงแอดส์)',
+  accountNumber: '',
+  qrUrl:
+    'https://i.postimg.cc/WzkBgWtX/IMG-1170.jpg'
+};
+
+const state = {
+  token: localStorage.getItem('sni_token') || '',
+  user: null,
+  products: [],
+  orders: [],
+  settings: {...DEFAULT_STORE},
+  stats: {},
+  admin: null,
+  currentView: 'home'
+};
+
+let toastTimer = null;
+let selectedSlip = null;
+
+// =====================================
+// 2. UTILITIES
+// =====================================
+
+function $(id) {
+  return document.getElementById(id);
+}
+
+function esc(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function money(value) {
+  return Number(value || 0)
+    .toLocaleString('th-TH') + ' ฿';
+}
+
+function dateText(value) {
+  if (!value) return '-';
+
+  const date = new Date(value);
+
+  return Number.isNaN(date.getTime())
+    ? '-'
+    : date.toLocaleString('th-TH');
+}
+
+function icons() {
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+}
+
+function showLoading(show) {
+  $('loading').classList.toggle(
+    'hidden-view', !show
+  );
+}
+
+function toast(message) {
+  const el = $('toast');
+
+  el.textContent = message;
+  el.classList.remove('hidden-view');
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    el.classList.add('hidden-view');
+  }, 3500);
+}
+
+function setModal(title, html) {
+  $('modalTitle').textContent = title;
+  $('modalBody').innerHTML = html;
+
+  $('modal').classList.remove('hidden-view');
+
+  document.body.style.overflow = 'hidden';
+
+  icons();
+}
+
+function closeModal() {
+  $('modal').classList.add('hidden-view');
+  $('modalBody').innerHTML = '';
+
+  document.body.style.overflow = '';
+  selectedSlip = null;
+}
+
+function backdropClose(event) {
+  if (event.target === $('modal')) {
+    closeModal();
+  }
+}
+
+function copyText(value) {
+  navigator.clipboard.writeText(value)
+    .then(() => toast('คัดลอกเรียบร้อย'))
+    .catch(() => toast('ไม่สามารถคัดลอกได้'));
+}
+
+function scrollToProducts() {
+  showView('home');
+
+  setTimeout(() => {
+    $('productsSection').scrollIntoView({
+      behavior: 'smooth'
+    });
+  }, 50);
+}
+
+// =====================================
+// 3. GOOGLE APPS SCRIPT API
+// =====================================
+
+async function api(action, payload = {}) {
+  const response = await fetch(API_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type':
+        'text/plain;charset=utf-8'
+    },
+    body: JSON.stringify({
+      action,
+      payload,
+      token: state.token || ''
+    }),
+    redirect: 'follow'
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      'ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์'
+    );
+  }
+
+  const result = await response.json();
+
+  if (!result.ok) {
+    throw new Error(
+      result.error || 'เกิดข้อผิดพลาด'
+    );
+  }
+
+  return result.data;
+}
+
+async function runTask(task) {
+  showLoading(true);
+
+  try {
+    return await task();
+  } catch (err) {
+    console.error(err);
+    toast(err.message || 'เกิดข้อผิดพลาด');
+    return null;
+  } finally {
+    showLoading(false);
+  }
+}
+
+// =====================================
+// 4. NAVIGATION
+// =====================================
+
+function showView(view) {
+  if (
+    view === 'admin' &&
+    state.user?.role !== 'admin'
+  ) {
+    toast('เฉพาะแอดมินเท่านั้น');
+    return;
+  }
+
+  if (view === 'orders' && !state.user) {
+    openAuth('login');
+    return;
+  }
+
+  ['home','orders','guide','admin']
+    .forEach(name => {
+      $('view-' + name).classList.toggle(
+        'hidden-view',
+        name !== view
+      );
+    });
+
+  document.querySelectorAll('[data-view]')
+    .forEach(btn => {
+      btn.classList.toggle(
+        'active',
+        btn.dataset.view === view
+      );
+    });
+
+  state.currentView = view;
+
+  if (view === 'orders') {
+    loadMyOrders();
+  }
+
+  if (view === 'admin') {
+    loadAdmin();
+  }
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
+  icons();
+}
+
+// =====================================
+// 5. AUTHENTICATION
+// =====================================
+
+function openAuth(mode = 'login') {
+  const register = mode === 'register';
+
+  setModal(
+    register ? 'สมัครสมาชิก' : 'เข้าสู่ระบบ',
+    `
+      <form onsubmit="submitAuth(event,'${mode}')"
+        class="space-y-4">
+
+        ${register ? `
+          <div>
+            <label class="block text-sm mb-2">
+              ชื่อสมาชิก
+            </label>
+
+            <input id="authName"
+              class="input"
+              maxlength="80"
+              required
+              autocomplete="name"
+              placeholder="ชื่อของคุณ">
+          </div>
+        ` : ''}
+
+        <div>
+          <label class="block text-sm mb-2">
+            อีเมล
+          </label>
+
+          <input id="authEmail"
+            class="input"
+            type="email"
+            required
+            autocomplete="email"
+            placeholder="example@email.com">
+        </div>
+
+        <div>
+          <label class="block text-sm mb-2">
+            รหัสผ่าน
+          </label>
+
+          <input id="authPassword"
+            class="input"
+            type="password"
+            minlength="${register ? 10 : 1}"
+            required
+            autocomplete="${
+              register
+                ? 'new-password'
+                : 'current-password'
+            }"
+            placeholder="กรอกรหัสผ่าน">
+        </div>
+
+        <button type="submit"
+          class="btn-primary w-full">
+          ${register ? 'สมัครสมาชิก' : 'เข้าสู่ระบบ'}
+        </button>
+      </form>
+
+      <div class="text-center mt-5 text-sm">
+        ${
+          register
+            ? 'มีบัญชีแล้ว?'
+            : 'ยังไม่มีบัญชี?'
+        }
+
+        <button
+          onclick="openAuth('${
+            register ? 'login' : 'register'
+          }')"
+          class="text-pinky-700 font-semibold ml-1">
+          ${
+            register
+              ? 'เข้าสู่ระบบ'
+              : 'สมัครสมาชิก'
+          }
+        </button>
+      </div>
+    `
+  );
+}
+
+async function submitAuth(event, mode) {
+  event.preventDefault();
+
+  const payload = {
+    email: $('authEmail').value.trim(),
+    password: $('authPassword').value
+  };
+
+  if (mode === 'register') {
+    payload.name =
+      $('authName').value.trim();
+  }
+
+  const result = await runTask(() =>
+    api(mode, payload)
+  );
+
+  if (!result) return;
+
+  state.token = result.token;
+  state.user = result.user;
+
+  localStorage.setItem(
+    'sni_token',
+    state.token
+  );
+
+  closeModal();
+  updateAuthUI();
+
+  toast(
+    mode === 'register'
+      ? 'สมัครสมาชิกสำเร็จ'
+      : 'เข้าสู่ระบบสำเร็จ'
+  );
+
+  await loadPublic();
+
+  showView('home');
+}
+
+function updateAuthUI() {
+  const loggedIn = !!state.user;
+
+  $('guestActions').classList.toggle(
+    'hidden-view', loggedIn
+  );
+
+  $('userActions').classList.toggle(
+    'hidden-view', !loggedIn
+  );
+
+  $('adminNav').classList.toggle(
+    'hidden-view',
+    state.user?.role !== 'admin'
+  );
+
+  $('userName').textContent =
+    state.user?.name || '';
+}
+
+async function restoreSession() {
+  if (!state.token) return;
+
+  try {
+    state.user = await api('me');
+  } catch (err) {
+    state.token = '';
+    state.user = null;
+
+    localStorage.removeItem(
+      'sni_token'
+    );
+  }
+
+  updateAuthUI();
+}
+
+async function logout() {
+  if (state.token) {
+    try {
+      await api('logout');
+    } catch (err) {
+      console.warn(err);
+    }
+  }
+
+  state.token = '';
+  state.user = null;
+  state.orders = [];
+  state.admin = null;
+
+  localStorage.removeItem(
+    'sni_token'
+  );
+
+  updateAuthUI();
+  showView('home');
+
+  toast('ออกจากระบบเรียบร้อย');
+}
+
+// =====================================
+// 6. LOAD STORE
+// =====================================
+
+async function loadPublic() {
+  try {
+    const data = await api('public');
+
+    state.products = data.products || [];
+
+    state.settings = {
+      ...DEFAULT_STORE,
+      ...(data.settings || {})
+    };
+
+    state.stats = data.stats || {};
+
+    renderStore();
+  } catch (err) {
+    toast(
+      'โหลดข้อมูลร้านไม่สำเร็จ: ' +
+      err.message
+    );
+  }
+}
+
+function renderStore() {
+  const s = state.settings;
+  const stats = state.stats;
+
+  $('brandName').textContent =
+    s.storeName;
+
+  $('heroTitle').textContent =
+    s.heroTitle;
+
+  $('heroText').textContent =
+    s.heroText;
+
+  $('announcement').textContent =
+    s.announcement;
+
+  $('statMembers').textContent =
+    Number(stats.members || 0)
+      .toLocaleString('th-TH');
+
+  $('statRevenue').textContent =
+    money(stats.revenue);
+
+  $('statSold').textContent =
+    Number(stats.sold || 0)
+      .toLocaleString('th-TH');
+
+  $('statStock').textContent =
+    Number(stats.stock || 0)
+      .toLocaleString('th-TH');
+
+  $('joinGuideLink').href =
+    s.joinGuideUrl;
+
+  $('leaveGuideLink').href =
+    s.leaveGuideUrl;
+
+  $('rulesImage').src =
+    s.rulesImageUrl;
+
+  $('lineLink').href =
+    s.lineUrl;
+
+  if (s.backgroundUrl) {
+    document.body.style.backgroundImage =
+      `linear-gradient(
+        rgba(255,247,251,.85),
+        rgba(255,247,251,.93)
+      ),url("${s.backgroundUrl.replace(/"/g,'')}")`;
+  }
+
+  renderProducts();
+  icons();
+}
+
+// =====================================
+// 7. PRODUCT DISPLAY
+// =====================================
+
+function renderProducts() {
+  const grid = $('productGrid');
+
+  if (!state.products.length) {
+    grid.innerHTML = `
+      <div class="card p-10
+        text-center col-span-full">
+        ยังไม่มีสินค้าเปิดขาย
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML = state.products
+    .map(p => `
+      <article class="card p-4 flex flex-col">
+
+        ${
+          p.imageUrl
+            ? `<img
+                src="${esc(p.imageUrl)}"
+                class="product-img mb-4"
+                alt="${esc(p.title)}"
+                loading="lazy">`
+            : `<div class="product-img mb-4
+                flex items-center justify-center">
+                <i data-lucide="package"
+                  class="w-14 h-14 text-pinky-300">
+                </i>
+              </div>`
+        }
+
+        <h3 class="font-bold text-pinky-700
+          leading-6 mb-2">
+          ${esc(p.title)}
+        </h3>
+
+        <p class="text-xs text-gray-500
+          leading-6 mb-4 flex-1">
+          ${esc(p.description)}
+        </p>
+
+        <div class="flex items-center
+          justify-between mb-4">
+
+          <span class="text-xl font-bold
+            text-pinky-700">
+            ${money(p.price)}
+          </span>
+
+          <span class="status">
+            สต๊อก ${Number(p.stock)}
+          </span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <button
+            onclick="viewProduct('${esc(p.id)}')"
+            class="btn-soft text-xs">
+            ดูสินค้า
+          </button>
+
+          <button
+            onclick="buyProduct('${esc(p.id)}')"
+            class="btn-primary text-xs"
+            ${p.stock < 1 ? 'disabled' : ''}>
+            ${
+              p.stock < 1
+                ? 'สินค้าหมด'
+                : 'สั่งซื้อ'
+            }
+          </button>
+        </div>
+      </article>
+    `).join('');
+
+  icons();
+}
+
+function viewProduct(id) {
+  const p = state.products.find(
+    x => x.id === id
+  );
+
+  if (!p) return;
+
+  setModal('รายละเอียดสินค้า',`
+    ${
+      p.imageUrl
+        ? `<img src="${esc(p.imageUrl)}"
+            class="w-full rounded-2xl mb-4"
+            alt="${esc(p.title)}">`
+        : ''
+    }
+
+    <h3 class="font-bold text-lg
+      text-pinky-700 mb-2">
+      ${esc(p.title)}
+    </h3>
+
+    <p class="text-sm text-gray-600
+      whitespace-pre-wrap leading-7 mb-4">
+      ${esc(p.description)}
+    </p>
+
+    <div class="card p-4 mb-5">
+      <div class="flex justify-between">
+        <span>ราคา</span>
+        <strong>${money(p.price)}</strong>
+      </div>
+
+      <div class="flex justify-between mt-2">
+        <span>สต๊อกพร้อมขาย</span>
+        <strong>${Number(p.stock)}</strong>
+      </div>
+    </div>
+
+    <button onclick="closeModal();
+      buyProduct('${esc(p.id)}')"
+      class="btn-primary w-full"
+      ${p.stock < 1 ? 'disabled' : ''}>
+      สั่งซื้อสินค้า
+    </button>
+  `);
+}
+
+// =====================================
+// 8. PURCHASE
+// =====================================
+
+function buyProduct(id) {
+  if (!state.user) {
+    openAuth('login');
+    return;
+  }
+
+  const p = state.products.find(
+    x => x.id === id
+  );
+
+  if (!p) return;
+
+  setModal('สั่งซื้อสินค้า',`
+    <div class="card p-4 mb-5">
+      <h3 class="font-bold text-pinky-700">
+        ${esc(p.title)}
+      </h3>
+
+      <p class="text-sm text-gray-500 mt-2">
+        ราคา ${money(p.price)} ต่อรายการ
+      </p>
+
+      <p class="text-xs text-gray-500 mt-1">
+        สต๊อกคงเหลือ ${Number(p.stock)}
+      </p>
+    </div>
+
+    <label class="block text-sm mb-2">
+      จำนวนที่ต้องการ
+    </label>
+
+    <input id="buyQuantity"
+      class="input mb-4"
+      type="number"
+      min="1"
+      max="${Math.min(5,p.stock)}"
+      value="1"
+      oninput="updateBuyTotal('${esc(p.id)}')">
+
+    <div class="flex justify-between
+      items-center mb-5">
+
+      <span>ยอดชำระทั้งหมด</span>
+
+      <strong id="buyTotal"
+        class="text-2xl text-pinky-700">
+        ${money(p.price)}
+      </strong>
+    </div>
+
+    <button
+      onclick="submitOrder('${esc(p.id)}')"
+      class="btn-primary w-full">
+      ยืนยันคำสั่งซื้อ
+    </button>
+  `);
+}
+
+function updateBuyTotal(id) {
+  const p = state.products.find(
+    x => x.id === id
+  );
+
+  if (!p) return;
+
+  const qty = Number(
+    $('buyQuantity').value || 0
+  );
+
+  $('buyTotal').textContent =
+    money(p.price * qty);
+}
+
+async function submitOrder(id) {
+  const quantity = Number(
+    $('buyQuantity').value
+  );
+
+  const result = await runTask(() =>
+    api('createOrder',{
+      productId:id,
+      quantity
+    })
+  );
+
+  if (!result) return;
+
+  await loadPublic();
+
+  showPayment(result);
+}
+
+// =====================================
+// 9. PAYMENT & SLIP UPLOAD
+// =====================================
+
+function showPayment(order) {
+  const s = state.settings;
+
+  selectedSlip = null;
+
+  setModal('ชำระเงินและแนบสลิป',`
+    <div class="text-center">
+
+      <p class="text-sm text-gray-500 mb-2">
+        ยอดที่ต้องชำระ
+      </p>
+
+      <h3 class="text-3xl font-bold
+        text-pinky-700 mb-5">
+        ${money(order.total)}
+      </h3>
+
+      <div class="card p-5 mb-5">
+        <img
+          src="${esc(s.qrUrl)}"
+          alt="QR Code ชำระเงิน"
+          class="w-56 max-w-full mx-auto
+            rounded-xl mb-4">
+
+        <p class="font-semibold">
+          ${esc(s.bankName)}
+        </p>
+
+        <p class="text-sm mt-1">
+          ${esc(s.accountName)}
+        </p>
+
+        ${
+          s.accountNumber
+            ? `<p class="text-sm mt-1">
+                ${esc(s.accountNumber)}
+              </p>`
+            : ''
+        }
+      </div>
+
+      <div class="text-left mb-5">
+        <label class="block text-sm
+          font-semibold mb-2">
+          แนบรูปสลิปการโอนเงิน
+        </label>
+
+        <input id="paymentSlip"
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          class="input"
+          onchange="previewSlip(this)">
+
+        <img id="slipPreview"
+          class="hidden-view mt-4 w-full
+            max-h-80 object-contain
+            rounded-2xl border border-pink-100"
+          alt="ตัวอย่างสลิป">
+
+        <p class="text-xs text-gray-500 mt-2">
+          รองรับ JPG, PNG, WEBP
+          ขนาดไม่เกิน 2.5 MB
+        </p>
+      </div>
+
+      <button
+        onclick="submitPaymentSlip('${esc(order.id)}')"
+        class="btn-primary w-full">
+        ส่งสลิปและรับสินค้าอัตโนมัติ
+      </button>
+
+      <p class="text-xs text-gray-500 mt-4">
+        ต้องแนบรูปสลิปก่อน
+        ระบบจึงจะจัดส่งข้อมูลสินค้า
+      </p>
+    </div>
+  `);
+}
+
+function previewSlip(input) {
+  const file = input.files?.[0];
+
+  const preview = $('slipPreview');
+
+  if (!file) {
+    selectedSlip = null;
+    preview.classList.add('hidden-view');
+    return;
+  }
+
+  const allowed = [
+    'image/jpeg',
+    'image/png',
+    'image/webp'
+  ];
+
+  if (!allowed.includes(file.type)) {
+    input.value = '';
+    selectedSlip = null;
+
+    toast('รองรับเฉพาะ JPG, PNG และ WEBP');
+    return;
+  }
+
+  if (file.size > 2500000) {
+    input.value = '';
+    selectedSlip = null;
+
+    toast('รูปสลิปใหญ่เกิน 2.5 MB');
+    return;
+  }
+
+  selectedSlip = file;
+
+  const reader = new FileReader();
+
+  reader.onload = () => {
+    preview.src = reader.result;
+    preview.classList.remove('hidden-view');
+  };
+
+  reader.readAsDataURL(file);
+}
+
+async function submitPaymentSlip(orderId) {
+  if (!selectedSlip) {
+    toast('กรุณาแนบรูปสลิปก่อน');
+    return;
+  }
+
+  const file = selectedSlip;
+
+  const dataUrl = await new Promise(
+    (resolve,reject) => {
+      const reader = new FileReader();
+
+      reader.onload = () =>
+        resolve(reader.result);
+
+      reader.onerror = () =>
+        reject(
+          new Error('อ่านรูปสลิปไม่สำเร็จ')
+        );
+
+      reader.readAsDataURL(file);
+    }
+  );
+
+  const result = await runTask(() =>
+    api('uploadSlip',{
+      orderId,
+      dataUrl
+    })
+  );
+
+  if (!result) return;
+
+  closeModal();
+
+  toast(result.message);
+
+  await loadPublic();
+
+  showView('orders');
+}
+
+// =====================================
+// 10. CUSTOMER ORDERS
+// =====================================
+
+async function loadMyOrders() {
+  if (!state.user) return;
+
+  const data = await runTask(() =>
+    api('myOrders')
+  );
+
+  if (!data) return;
+
+  state.orders = data;
+
+  renderMyOrders();
+}
+
+function orderStatus(status) {
+  const map = {
+    WAITING_PAYMENT: 'รอชำระเงิน',
+    APPROVED: 'จัดส่งสำเร็จ',
+    PAID_AWAITING_STOCK: 'รอเติมสต๊อก',
+    CANCELLED: 'ยกเลิกแล้ว'
+  };
+
+  return map[status] || status;
+}
+
+function renderMyOrders() {
+  const list = $('ordersList');
+
+  if (!state.orders.length) {
+    list.innerHTML = `
+      <div class="card p-10 text-center">
+        <i data-lucide="shopping-bag"
+          class="w-10 h-10 mx-auto
+            text-pinky-300 mb-4"></i>
+
+        <p class="font-semibold">
+          ยังไม่มีคำสั่งซื้อ
+        </p>
+
+        <button onclick="showView('home')"
+          class="btn-primary mt-5">
+          เลือกซื้อสินค้า
+        </button>
+      </div>
+    `;
+
+    icons();
+    return;
+  }
+
+  list.innerHTML = state.orders.map(o => `
+    <div class="card p-5">
+
+      <div class="flex flex-wrap
+        justify-between gap-3 mb-4">
+
+        <div>
+          <h3 class="font-bold text-pinky-700">
+            ${esc(o.productTitle)}
+          </h3>
+
+          <p class="text-xs text-gray-500 mt-1">
+            ${esc(o.id)}
+          </p>
+        </div>
+
+        <span class="status">
+          ${esc(orderStatus(o.status))}
+        </span>
+      </div>
+
+      <div class="text-sm text-gray-600
+        space-y-2">
+
+        <div class="flex justify-between">
+          <span>จำนวน</span>
+          <strong>${Number(o.quantity)}</strong>
+        </div>
+
+        <div class="flex justify-between">
+          <span>ยอดชำระ</span>
+          <strong>${money(o.total)}</strong>
+        </div>
+
+        <div class="flex justify-between">
+          <span>วันที่สั่งซื้อ</span>
+          <span>${dateText(o.createdAt)}</span>
+        </div>
+      </div>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+
+        ${
+          o.status === 'APPROVED'
+            ? `<button
+                onclick="viewDelivery('${esc(o.id)}')"
+                class="btn-primary flex-1">
+                ดูสินค้า
+              </button>`
+            : ''
+        }
+
+        ${
+          o.status === 'WAITING_PAYMENT'
+            ? `<button
+                onclick="showPayment({
+                  id:'${esc(o.id)}',
+                  total:${Number(o.total)}
+                })"
+                class="btn-primary flex-1">
+                แนบสลิป
+              </button>
+
+              <button
+                onclick="cancelMyOrder('${esc(o.id)}')"
+                class="btn-soft">
+                ยกเลิก
+              </button>`
+            : ''
+        }
+
+        ${
+          o.status === 'PAID_AWAITING_STOCK'
+            ? `<span class="text-xs text-gray-500">
+                บันทึกสลิปแล้ว
+                ระบบจะส่งสินค้าเมื่อเติมสต๊อก
+              </span>`
+            : ''
+        }
+      </div>
+    </div>
+  `).join('');
+
+  icons();
+}
+
+// =====================================
+// 11. DELIVERY VIEWER
+// =====================================
+
+function viewDelivery(orderId) {
+  const order = state.orders.find(
+    o => o.id === orderId
+  );
+
+  if (
+    !order ||
+    order.status !== 'APPROVED'
+  ) {
+    toast('ยังไม่สามารถดูสินค้าได้');
+    return;
+  }
+
+  const delivery = order.delivery || [];
+
+  if (!delivery.length) {
+    toast('ไม่พบข้อมูลสินค้าที่จัดส่ง');
+    return;
+  }
+
+  setModal('ข้อมูลสินค้าที่ได้รับ',`
+    <div class="mb-5">
+      <h3 class="font-bold text-pinky-700">
+        ${esc(order.productTitle)}
+      </h3>
+
+      <p class="text-xs text-gray-500 mt-2">
+        คำสั่งซื้อ ${esc(order.id)}
+      </p>
+    </div>
+
+    <p class="text-xs text-gray-500 mb-4">
+      กรุณาเก็บข้อมูลสินค้าไว้เป็นส่วนตัว
+    </p>
+
+    <div class="space-y-4">
+      ${delivery.map((secret,i) => `
+        <div>
+          <p class="text-sm font-semibold mb-2">
+            สินค้ารายการที่ ${i + 1}
+          </p>
+
+          <div class="stock-box">
+            ${esc(secret)}
+          </div>
+
+          <button
+            class="btn-soft w-full mt-2"
+            onclick="copyDelivery(
+              '${esc(order.id)}',${i}
+            )">
+            คัดลอกข้อมูลสินค้า
+          </button>
+        </div>
+      `).join('')}
+    </div>
+
+    <button onclick="closeModal()"
+      class="btn-primary w-full mt-6">
+      ปิดหน้าต่าง
+    </button>
+  `);
+}
+
+function copyDelivery(orderId,index) {
+  const order = state.orders.find(
+    o => o.id === orderId
+  );
+
+  if (!order) return;
+
+  const secret = order.delivery?.[index];
+
+  if (secret === undefined) return;
+
+  copyText(secret);
+}
+
+// =====================================
+// 12. CANCEL ORDER
+// =====================================
+
+async function cancelMyOrder(id) {
+  if (!confirm(
+    'ต้องการยกเลิกคำสั่งซื้อนี้ใช่ไหม?'
+  )) return;
+
+  const result = await runTask(() =>
+    api('cancelOrder',{id})
+  );
+
+  if (!result) return;
+
+  toast('ยกเลิกคำสั่งซื้อเรียบร้อย');
+
+  await loadMyOrders();
+}
+
+// =====================================
+// 13. INITIALIZATION
+// =====================================
+
+async function initStore() {
+  updateAuthUI();
+
+  await restoreSession();
+  await loadPublic();
+
+  icons();
+}
+
+document.addEventListener(
+  'DOMContentLoaded',
+  initStore
+);
+
+</script>
+
+<!-- Admin JavaScript continues in Part 3 -->
+
+<script>
+/* =========================================
+   SNI sindy — FRONTEND PART 3/3
+   Complete Admin Dashboard
+========================================= */
+
+// =====================================
+// 14. ADMIN HELPERS
+// =====================================
+
+let currentAdminTab = 'dashboard';
+
+function adminOnly() {
+  if (
+    !state.user ||
+    state.user.role !== 'admin'
+  ) {
+    throw new Error(
+      'เฉพาะผู้ดูแลระบบเท่านั้น'
+    );
+  }
+}
+
+function adminItem(type, id) {
+  return (state.admin?.[type] || [])
+    .find(x => String(x.id) === String(id));
+}
+
+function adminButton(label, fn, kind = 'soft') {
+  return `
+    <button type="button"
+      class="${kind === 'primary'
+        ? 'btn-primary'
+        : 'btn-soft'} text-xs"
+      onclick="${fn}">
+      ${esc(label)}
+    </button>
+  `;
+}
+
+function adminEmpty(message) {
+  return `
+    <div class="text-center py-10
+      text-sm text-gray-500">
+      ${esc(message)}
+    </div>
+  `;
+}
+
+function adminTable(headers, rows) {
+  return `
+    <div class="overflow-x-auto
+      rounded-xl border border-pink-100">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            ${headers.map(h =>
+              `<th>${esc(h)}</th>`
+            ).join('')}
+          </tr>
+        </thead>
+        <tbody>
+          ${rows || `
+            <tr>
+              <td colspan="${headers.length}"
+                class="text-center">
+                ไม่มีข้อมูล
+              </td>
+            </tr>
+          `}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function adminSection(title, content, action = '') {
+  return `
+    <div class="flex flex-wrap
+      items-center justify-between
+      gap-3 mb-5">
+      <h3 class="font-bold text-pinky-700">
+        ${esc(title)}
+      </h3>
+      ${action}
+    </div>
+    ${content}
+  `;
+}
+
+// =====================================
+// 15. LOAD ADMIN DATA
+// =====================================
+
+async function loadAdmin() {
+  if (state.user?.role !== 'admin') {
+    return;
+  }
+
+  const data = await runTask(() =>
+    api('adminData')
+  );
+
+  if (!data) return;
+
+  state.admin = data;
+
+  renderAdmin();
+}
+
+function adminTab(name) {
+  currentAdminTab = name;
+
+  document.querySelectorAll(
+    '[data-tab]'
+  ).forEach(btn => {
+    btn.classList.toggle(
+      'active',
+      btn.dataset.tab === name
+    );
+  });
+
+  renderAdmin();
+}
+
+function renderAdmin() {
+  if (!state.admin) {
+    $('adminContent').innerHTML =
+      adminEmpty('กำลังโหลดข้อมูล');
+    return;
+  }
+
+  const renderers = {
+    dashboard: renderAdminDashboard,
+    products: renderAdminProducts,
+    stock: renderAdminStock,
+    orders: renderAdminOrders,
+    users: renderAdminUsers,
+    settings: renderAdminSettings
+  };
+
+  const render = renderers[currentAdminTab];
+
+  if (render) {
+    render();
+  }
+
+  icons();
+}
+
+// =====================================
+// 16. ADMIN DASHBOARD
+// =====================================
+
+function renderAdminDashboard() {
+  const data = state.admin;
+
+  const completed = data.orders.filter(
+    o => o.status === 'APPROVED'
+  );
+
+  const waiting = data.orders.filter(
+    o => o.status === 'WAITING_PAYMENT'
+  );
+
+  const awaitingStock = data.orders.filter(
+    o => o.status === 'PAID_AWAITING_STOCK'
+  );
+
+  const revenue = completed.reduce(
+    (sum, o) => sum + Number(o.total || 0),
+    0
+  );
+
+  const available = data.stock.filter(
+    s => s.status === 'AVAILABLE'
+  );
+
+  const cards = [
+    ['สมาชิกทั้งหมด', data.users.length],
+    ['สินค้าทั้งหมด', data.products.length],
+    ['ยอดจัดส่ง', completed.length],
+    ['ยอดขายที่บันทึก', money(revenue)],
+    ['รอแนบสลิป', waiting.length],
+    ['แนบสลิปแล้ว รอสต๊อก', awaitingStock.length],
+    ['สต๊อกพร้อมขาย', available.length],
+    ['คำสั่งซื้อทั้งหมด', data.orders.length]
+  ];
+
+  $('adminContent').innerHTML = `
+    ${adminSection(
+      'ภาพรวมร้านค้า',
+      `
+        <div class="grid grid-cols-2
+          lg:grid-cols-4 gap-3 mb-6">
+          ${cards.map(([label, value]) => `
+            <div class="rounded-2xl
+              bg-pink-50 border
+              border-pink-100 p-4">
+              <p class="text-xs text-gray-500">
+                ${esc(label)}
+              </p>
+              <p class="font-bold
+                text-xl text-pinky-700 mt-2">
+                ${esc(value)}
+              </p>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="rounded-xl
+          bg-pink-50 p-4 text-xs
+          text-gray-600 leading-7">
+          ระบบจัดส่งสินค้าอัตโนมัติ
+          หลังอัปโหลดรูปสลิปสำเร็จ
+          โดยไม่มีการอนุมัติจากแอดมิน
+          <br>
+          ยอดขายที่แสดงเป็นยอดจาก
+          คำสั่งซื้อที่ระบบจัดส่งแล้ว
+          ไม่ใช่ยอดเงินที่ตรวจสอบกับธนาคาร
+        </div>
+      `,
+      adminButton(
+        'รีเฟรชข้อมูล',
+        'loadAdmin()'
+      )
+    )}
+  `;
+}
+
+// =====================================
+// 17. ADMIN PRODUCTS
+// =====================================
+
+function renderAdminProducts() {
+  const products = state.admin.products;
+
+  const rows = products.map(p => `
+    <tr>
+      <td>
+        <strong>${esc(p.title)}</strong>
+        <p class="text-gray-400 mt-1">
+          ${esc(p.id)}
+        </p>
+      </td>
+
+      <td>${money(p.price)}</td>
+
+      <td>
+        <span class="status">
+          ${p.active ? 'เปิดขาย' : 'ปิดขาย'}
+        </span>
+      </td>
+
+      <td>${Number(p.sort)}</td>
+
+      <td>
+        <div class="flex flex-wrap gap-2">
+          ${adminButton(
+            'แก้ไข',
+            `openProductEditor('${esc(p.id)}')`
+          )}
+
+          ${adminButton(
+            p.active ? 'ปิดขาย' : 'เปิดขาย',
+            `toggleProduct('${esc(p.id)}')`
+          )}
+        </div>
+      </td>
+    </tr>
+  `).join('');
+
+  $('adminContent').innerHTML =
+    adminSection(
+      'จัดการสินค้า',
+      adminTable(
+        ['สินค้า','ราคา','สถานะ','ลำดับ','จัดการ'],
+        rows
+      ),
+      adminButton(
+        'เพิ่มสินค้า',
+        'openProductEditor()',
+        'primary'
+      )
+    );
+}
+
+function openProductEditor(id = '') {
+  const p = id
+    ? adminItem('products', id)
+    : null;
+
+  if (id && !p) {
+    toast('ไม่พบสินค้า');
+    return;
+  }
+
+  setModal(
+    p ? 'แก้ไขสินค้า' : 'เพิ่มสินค้า',
+    `
+      <form id="productForm"
+        onsubmit="saveProductForm(event)"
+        class="space-y-4">
+
+        <input type="hidden"
+          id="productId"
+          value="${esc(p?.id || '')}">
+
+        <div>
+          <label class="block text-sm mb-2">
+            ชื่อสินค้า
+          </label>
+          <input id="productTitle"
+            class="input" required
+            maxlength="150"
+            value="${esc(p?.title || '')}">
+        </div>
+
+        <div>
+          <label class="block text-sm mb-2">
+            รายละเอียดสินค้า
+          </label>
+          <textarea id="productDescription"
+            class="input" rows="4"
+            maxlength="1000">${esc(
+              p?.description || ''
+            )}</textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-2">
+            ราคา (บาท)
+          </label>
+          <input id="productPrice"
+            class="input" type="number"
+            min="0.01" step="0.01"
+            required
+            value="${p ? Number(p.price) : ''}">
+        </div>
+
+        <div>
+          <label class="block text-sm mb-2">
+            URL รูปสินค้า (HTTPS)
+          </label>
+          <input id="productImage"
+            class="input" type="url"
+            placeholder="https://..."
+            value="${esc(p?.imageUrl || '')}">
+        </div>
+
+        <div>
+          <label class="block text-sm mb-2">
+            ลำดับการแสดง
+          </label>
+          <input id="productSort"
+            class="input" type="number"
+            min="0" step="1"
+            value="${p ? Number(p.sort) : 0}">
+        </div>
+
+        <button type="submit"
+          class="btn-primary w-full">
+          บันทึกสินค้า
+        </button>
+      </form>
+    `
+  );
+}
+
+async function saveProductForm(event) {
+  event.preventDefault();
+
+  const payload = {
+    id: $('productId').value,
+    title: $('productTitle').value.trim(),
+    description:
+      $('productDescription').value.trim(),
+    price: Number($('productPrice').value),
+    imageUrl: $('productImage').value.trim(),
+    sort: Number($('productSort').value)
+  };
+
+  const result = await runTask(() =>
+    api('saveProduct', payload)
+  );
+
+  if (!result) return;
+
+  closeModal();
+  toast('บันทึกสินค้าเรียบร้อย');
+
+  await loadAdmin();
+  await loadPublic();
+}
+
+async function toggleProduct(id) {
+  const p = adminItem('products', id);
+
+  if (!p) return;
+
+  const next = !p.active;
+
+  if (!confirm(
+    `ต้องการ${next ? 'เปิด' : 'ปิด'}ขายสินค้านี้?`
+  )) return;
+
+  const result = await runTask(() =>
+    api('setProductActive', {
+      id,
+      active: next
+    })
+  );
+
+  if (!result) return;
+
+  toast('อัปเดตสถานะสินค้าแล้ว');
+
+  await loadAdmin();
+  await loadPublic();
+}
+
+// =====================================
+// 18. ADMIN STOCK
+// =====================================
+
+function renderAdminStock() {
+  const products = state.admin.products;
+  const stock = state.admin.stock;
+
+  const summary = products.map(p => {
+    const available = stock.filter(
+      s =>
+        s.productId === p.id &&
+        s.status === 'AVAILABLE'
+    ).length;
+
+    const sold = stock.filter(
+      s =>
+        s.productId === p.id &&
+        s.status === 'SOLD'
+    ).length;
+
+    return `
+      <div class="rounded-xl
+        bg-pink-50 p-4 border border-pink-100">
+        <p class="font-semibold text-sm">
+          ${esc(p.title)}
+        </p>
+
+        <p class="text-xs text-gray-500 mt-2">
+          พร้อมขาย ${available} |
+          ขายแล้ว ${sold}
+        </p>
+
+        <button class="btn-primary
+          text-xs mt-3"
+          onclick="openAddStock('${esc(p.id)}')">
+          เพิ่มสต๊อก
+        </button>
+      </div>
+    `;
+  }).join('');
+
+  const rows = stock.map(s => {
+    const product = products.find(
+      p => p.id === s.productId
+    );
+
+    return `
+      <tr>
+        <td>${esc(product?.title || s.productId)}</td>
+        <td>
+          <div class="max-w-[220px]
+            truncate" title="${esc(s.secret)}">
+            ${esc(s.secret)}
+          </div>
+        </td>
+        <td>
+          <span class="status">
+            ${s.status === 'AVAILABLE'
+              ? 'พร้อมขาย'
+              : 'ขายแล้ว'}
+          </span>
+        </td>
+        <td>
+          ${
+            s.status === 'AVAILABLE'
+              ? `<div class="flex gap-2">
+                  ${adminButton(
+                    'แก้ไข',
+                    `openEditStock('${esc(s.id)}')`
+                  )}
+                  ${adminButton(
+                    'ลบ',
+                    `deleteStockItem('${esc(s.id)}')`
+                  )}
+                </div>`
+              : 'ไม่สามารถแก้ไข'
+          }
+        </td>
+      </tr>
+    `;
+  }).join('');
+
+  $('adminContent').innerHTML =
+    adminSection(
+      'จัดการสต๊อกสินค้า',
+      `
+        <div class="grid grid-cols-1
+          sm:grid-cols-2 lg:grid-cols-3
+          gap-3 mb-7">
+          ${summary || adminEmpty('ยังไม่มีสินค้า')}
+        </div>
+
+        ${adminTable(
+          ['สินค้า','ข้อมูลจัดส่ง','สถานะ','จัดการ'],
+          rows
+        )}
+      `
+    );
+}
+
+function openAddStock(productId) {
+  const product = adminItem(
+    'products',
+    productId
+  );
+
+  if (!product) return;
+
+  setModal('เพิ่มสต๊อกสินค้า',`
+    <p class="font-semibold text-pinky-700 mb-4">
+      ${esc(product.title)}
+    </p>
+
+    <form onsubmit="submitAddStock(event,
+      '${esc(productId)}')">
+
+      <label class="block text-sm mb-2">
+        ข้อมูลจัดส่งสินค้า
+      </label>
+
+      <textarea id="stockItems"
+        class="input" rows="10"
+        required
+        placeholder="1 บรรทัด = 1 สินค้า"></textarea>
+
+      <p class="text-xs text-gray-500
+        leading-6 mt-3 mb-5">
+        กรอกข้อมูลสินค้าหนึ่งรายการต่อหนึ่งบรรทัด
+        สูงสุด 200 รายการต่อครั้ง
+        หากข้อมูลหนึ่งชุดมีหลายบรรทัด
+        กรุณาจัดรูปแบบให้เป็นหนึ่งบรรทัดก่อนเพิ่ม
+      </p>
+
+      <button type="submit"
+        class="btn-primary w-full">
+        เพิ่มสต๊อก
+      </button>
+    </form>
+  `);
+}
+
+async function submitAddStock(event, productId) {
+  event.preventDefault();
+
+  const items = $('stockItems').value
+    .split(/\r?\n/)
+    .map(x => x.trim())
+    .filter(Boolean);
+
+  if (!items.length || items.length > 200) {
+    toast('กรุณาใส่สต๊อก 1–200 รายการ');
+    return;
+  }
+
+  const result = await runTask(() =>
+    api('addStock', {
+      productId,
+      items
+    })
+  );
+
+  if (!result) return;
+
+  closeModal();
+  toast(`เพิ่มสต๊อก ${result.count} รายการแล้ว`);
+
+  await loadAdmin();
+  await loadPublic();
+}
+
+function openEditStock(id) {
+  const item = adminItem('stock', id);
+
+  if (!item || item.status !== 'AVAILABLE') {
+    toast('ไม่สามารถแก้ไขสต๊อกนี้');
+    return;
+  }
+
+  setModal('แก้ไขข้อมูลสต๊อก',`
+    <form onsubmit="submitEditStock(event,
+      '${esc(id)}')">
+
+      <label class="block text-sm mb-2">
+        ข้อมูลจัดส่ง
+      </label>
+
+      <textarea id="editStockSecret"
+        class="input" rows="8"
+        required>${esc(item.secret)}</textarea>
+
+      <button type="submit"
+        class="btn-primary w-full mt-5">
+        บันทึกการแก้ไข
+      </button>
+    </form>
+  `);
+}
+
+async function submitEditStock(event, id) {
+  event.preventDefault();
+
+  const result = await runTask(() =>
+    api('editStock', {
+      id,
+      secret: $('editStockSecret').value.trim()
+    })
+  );
+
+  if (!result) return;
+
+  closeModal();
+  toast('แก้ไขสต๊อกเรียบร้อย');
+  await loadAdmin();
+}
+
+async function deleteStockItem(id) {
+  if (!confirm(
+    'ต้องการลบสต๊อกนี้ถาวรใช่ไหม?'
+  )) return;
+
+  const result = await runTask(() =>
+    api('deleteStock', {id})
+  );
+
+  if (!result) return;
+
+  toast('ลบสต๊อกเรียบร้อย');
+
+  await loadAdmin();
+  await loadPublic();
+}
+
+// =====================================
+// 19. ADMIN ORDERS
+// =====================================
+
+function renderAdminOrders() {
+  const orders = state.admin.orders;
+
+  const rows = orders.map(o => `
+    <tr>
+      <td>
+        <strong>${esc(o.id)}</strong>
+        <p class="text-gray-400 mt-1">
+          ${dateText(o.createdAt)}
+        </p>
+      </td>
+
+      <td>${esc(o.userEmail)}</td>
+
+      <td>
+        ${esc(o.productTitle)}
+        <p class="text-gray-400">
+          จำนวน ${Number(o.quantity)}
+        </p>
+      </td>
+
+      <td>${money(o.total)}</td>
+
+      <td>
+        <span class="status">
+          ${esc(orderStatus(o.status))}
+        </span>
+      </td>
+
+      <td>
+        ${
+          o.slipFileId
+            ? adminButton(
+                'ดูสลิป',
+                `openAdminSlip('${esc(o.id)}')`
+              )
+            : '<span class="text-gray-400">ยังไม่แนบ</span>'
+        }
+      </td>
+    </tr>
+  `).join('');
+
+  $('adminContent').innerHTML =
+    adminSection(
+      'คำสั่งซื้อทั้งหมด',
+      `
+        <p class="text-xs text-gray-500 mb-4">
+          คำสั่งซื้อจะถูกจัดส่งอัตโนมัติ
+          หลังบันทึกไฟล์สลิปสำเร็จ
+          แอดมินไม่ต้องกดอนุมัติ
+        </p>
+
+        ${adminTable(
+          [
+            'คำสั่งซื้อ',
+            'ลูกค้า',
+            'สินค้า',
+            'ยอดชำระ',
+            'สถานะ',
+            'สลิป'
+          ],
+          rows
+        )}
+      `,
+      adminButton(
+        'รีเฟรช',
+        'loadAdmin()'
+      )
+    );
+}
+
+function openAdminSlip(id) {
+  const order = adminItem('orders', id);
+
+  if (!order || !order.slipFileId) {
+    toast('ไม่พบสลิป');
+    return;
+  }
+
+  const fileUrl = order.slipUrl;
+
+  setModal('หลักฐานการชำระเงิน',`
+    <div class="space-y-4">
+
+      <div class="card p-4 text-sm">
+        <p><strong>คำสั่งซื้อ:</strong>
+          ${esc(order.id)}</p>
+
+        <p class="mt-2">
+          <strong>ลูกค้า:</strong>
+          ${esc(order.userEmail)}
+        </p>
+
+        <p class="mt-2">
+          <strong>ยอด:</strong>
+          ${money(order.total)}
+        </p>
+
+        <p class="mt-2">
+          <strong>สถานะ:</strong>
+          ${esc(orderStatus(order.status))}
+        </p>
+      </div>
+
+      <p class="text-xs text-gray-500
+        leading-6">
+        สลิปถูกจัดเก็บใน Google Drive
+        เปิดด้วยบัญชีที่มีสิทธิ์เข้าถึงโฟลเดอร์
+      </p>
+
+      <a href="${esc(fileUrl)}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary w-full">
+        เปิดไฟล์สลิปใน Google Drive
+      </a>
+
+      <p class="text-xs text-gray-500">
+        การเปิดดูสลิปไม่ได้เปลี่ยนสถานะ
+        คำสั่งซื้อหรือยืนยันยอดเงิน
+      </p>
+    </div>
+  `);
+}
+
+// =====================================
+// 20. ADMIN USERS
+// =====================================
+
+function renderAdminUsers() {
+  const rows = state.admin.users.map(u => `
+    <tr>
+      <td>
+        <strong>${esc(u.name)}</strong>
+        <p class="text-gray-400 mt-1">
+          ${esc(u.id)}
+        </p>
+      </td>
+
+      <td>${esc(u.email)}</td>
+
+      <td>${u.role === 'admin'
+        ? 'แอดมิน'
+        : 'สมาชิก'}</td>
+
+      <td>
+        <span class="status">
+          ${u.active ? 'ใช้งาน' : 'ระงับ'}
+        </span>
+      </td>
+
+      <td>
+        ${adminButton(
+          'จัดการ',
+          `openUserEditor('${esc(u.id)}')`
+        )}
+      </td>
+    </tr>
+  `).join('');
+
+  $('adminContent').innerHTML =
+    adminSection(
+      'จัดการสมาชิก',
+      adminTable(
+        [
+          'ชื่อสมาชิก',
+          'อีเมล',
+          'สิทธิ์',
+          'สถานะ',
+          'จัดการ'
+        ],
+        rows
+      )
+    );
+}
+
+function openUserEditor(id) {
+  const user = adminItem('users', id);
+
+  if (!user) return;
+
+  if (user.id === state.user.id) {
+    toast('ไม่สามารถแก้ไขบัญชีตัวเอง');
+    return;
+  }
+
+  setModal('จัดการสมาชิก',`
+    <form onsubmit="submitUserEditor(event,
+      '${esc(id)}')"
+      class="space-y-4">
+
+      <div class="card p-4">
+        <p class="font-semibold">
+          ${esc(user.name)}
+        </p>
+
+        <p class="text-xs text-gray-500 mt-1">
+          ${esc(user.email)}
+        </p>
+      </div>
+
+      <div>
+        <label class="block text-sm mb-2">
+          สิทธิ์สมาชิก
+        </label>
+
+        <select id="editUserRole"
+          class="input">
+          <option value="member"
+            ${user.role === 'member'
+              ? 'selected' : ''}>
+            สมาชิก
+          </option>
+
+          <option value="admin"
+            ${user.role === 'admin'
+              ? 'selected' : ''}>
+            แอดมิน
+          </option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm mb-2">
+          สถานะบัญชี
+        </label>
+
+        <select id="editUserActive"
+          class="input">
+          <option value="true"
+            ${user.active ? 'selected' : ''}>
+            เปิดใช้งาน
+          </option>
+
+          <option value="false"
+            ${!user.active ? 'selected' : ''}>
+            ระงับบัญชี
+          </option>
+        </select>
+      </div>
+
+      <button type="submit"
+        class="btn-primary w-full">
+        บันทึกสมาชิก
+      </button>
+    </form>
+  `);
+}
+
+async function submitUserEditor(event, id) {
+  event.preventDefault();
+
+  const role = $('editUserRole').value;
+  const active =
+    $('editUserActive').value === 'true';
+
+  if (!confirm(
+    'ยืนยันการเปลี่ยนแปลงบัญชีสมาชิก?'
+  )) return;
+
+  const result = await runTask(() =>
+    api('setUser', {
+      id,
+      role,
+      active
+    })
+  );
+
+  if (!result) return;
+
+  closeModal();
+  toast('อัปเดตสมาชิกเรียบร้อย');
+
+  await loadAdmin();
+}
+
+// =====================================
+// 21. ADMIN STORE SETTINGS
+// =====================================
+
+const SETTING_FIELDS = [
+  ['storeName', 'ชื่อร้าน'],
+  ['tagline', 'คำอธิบายร้าน'],
+  ['heroTitle', 'หัวข้อหน้าร้าน'],
+  ['heroText', 'ข้อความหน้าร้าน'],
+  ['announcement', 'ประกาศร้าน'],
+  ['backgroundUrl', 'URL ภาพพื้นหลัง'],
+  ['joinGuideUrl', 'URL วิธีเข้าร่วม Family'],
+  ['leaveGuideUrl', 'URL วิธีออกจาก Family'],
+  ['rulesImageUrl', 'URL รูปกฎการใช้งาน'],
+  ['lineUrl', 'URL ติดต่อ LINE'],
+  ['bankName', 'ชื่อธนาคาร'],
+  ['accountName', 'ชื่อบัญชีรับเงิน'],
+  ['accountNumber', 'เลขบัญชี'],
+  ['qrUrl', 'URL รูป QR Code']
+];
+
+function renderAdminSettings() {
+  const s = state.admin.settings || {};
+
+  $('adminContent').innerHTML =
+    adminSection(
+      'ตั้งค่าร้านค้า',
+      `
+        <form id="settingsForm"
+          onsubmit="submitSettings(event)"
+          class="grid grid-cols-1
+            md:grid-cols-2 gap-4">
+
+          ${SETTING_FIELDS.map(([key, label]) => `
+            <div class="${
+              ['heroText','announcement']
+                .includes(key)
+                  ? 'md:col-span-2'
+                  : ''
+            }">
+
+              <label class="block
+                text-sm mb-2">
+                ${esc(label)}
+              </label>
+
+              ${
+                ['heroText','announcement']
+                  .includes(key)
+                  ? `<textarea
+                      id="setting_${key}"
+                      class="input"
+                      rows="3">${esc(
+                        s[key] || ''
+                      )}</textarea>`
+                  : `<input
+                      id="setting_${key}"
+                      class="input"
+                      value="${esc(
+                        s[key] || ''
+                      )}">`
+              }
+            </div>
+          `).join('')}
+
+          <div class="md:col-span-2
+            border-t border-pink-100
+            pt-5">
+
+            <button type="submit"
+              class="btn-primary w-full">
+              บันทึกการตั้งค่าร้าน
+            </button>
+          </div>
+        </form>
+      `
+    );
+}
+
+async function submitSettings(event) {
+  event.preventDefault();
+
+  const settings = {};
+
+  SETTING_FIELDS.forEach(([key]) => {
+    settings[key] =
+      $('setting_' + key).value.trim();
+  });
+
+  const result = await runTask(() =>
+    api('saveSettings', {
+      settings
+    })
+  );
+
+  if (!result) return;
+
+  toast('บันทึกการตั้งค่าร้านเรียบร้อย');
+
+  await loadAdmin();
+  await loadPublic();
+}
+
+// =====================================
+// 22. ADMIN SECURITY CHECK
+// =====================================
+
+function ensureAdminView() {
+  if (state.user?.role !== 'admin') {
+    state.admin = null;
+    return false;
+  }
+
+  return true;
+}
+
+// =====================================
+// END OF SNI SINDY FRONTEND
+// =====================================
+</script>
+
+</body>
+</html>
